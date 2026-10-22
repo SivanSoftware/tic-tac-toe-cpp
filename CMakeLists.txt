@@ -12,6 +12,7 @@ endif()
 add_library(ttt_core
     src/Board.cpp
     src/Game.cpp
+    src/Ai.cpp
 )
 target_include_directories(ttt_core PUBLIC src)
 
@@ -19,6 +20,11 @@ add_executable(tic_tac_toe src/main.cpp)
 target_link_libraries(tic_tac_toe PRIVATE ttt_core)
 
 enable_testing()
+
 add_executable(ttt_tests tests/test_board.cpp)
 target_link_libraries(ttt_tests PRIVATE ttt_core)
 add_test(NAME ttt_tests COMMAND ttt_tests)
+
+add_executable(ttt_ai_tests tests/test_ai.cpp)
+target_link_libraries(ttt_ai_tests PRIVATE ttt_core)
+add_test(NAME ttt_ai_tests COMMAND ttt_ai_tests)

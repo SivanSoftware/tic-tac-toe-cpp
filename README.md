@@ -1,9 +1,19 @@
 # Tic-Tac-Toe
 
-A small two-player Tic-Tac-Toe game written in modern C++ (C++17), playable in the terminal.
+A small Tic-Tac-Toe game written in modern C++ (C++17), playable in the terminal.
+Play against a friend, or against an unbeatable computer opponent.
 
-The game logic is separated from the I/O loop, so the board rules are covered by
-standalone unit tests.
+The game logic is separated from the I/O loop, so the board rules and the AI are
+covered by standalone unit tests.
+
+## Game modes
+
+At startup you choose:
+
+1. **Two players** — both sides are human.
+2. **Play against the computer** — you pick X or O, and the computer plays the
+   other side using a [minimax](https://en.wikipedia.org/wiki/Minimax) search.
+   It plays perfectly, so the best you can do is a draw.
 
 ## Project layout
 
@@ -12,10 +22,12 @@ standalone unit tests.
 ├── CMakeLists.txt       # Build configuration
 ├── src/
 │   ├── Board.h / .cpp   # Board state, move rules, win/draw detection
-│   ├── Game.h / .cpp    # Interactive two-player game loop
+│   ├── Ai.h / .cpp      # Minimax computer opponent
+│   ├── Game.h / .cpp    # Interactive game loop (2-player and vs-computer)
 │   └── main.cpp         # Entry point
 └── tests/
-    └── test_board.cpp   # Unit tests for the board logic
+    ├── test_board.cpp   # Unit tests for the board logic
+    └── test_ai.cpp      # Unit tests for the AI (incl. an unbeatability proof)
 ```
 
 ## Build
